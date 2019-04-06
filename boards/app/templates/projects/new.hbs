@@ -1,0 +1,50 @@
+{{outlet}}
+
+<div class="ui grid center aligned">
+  <div class="ten wide column ">
+    <div class="ui raised piled segment">
+      <form class="ui form">
+        <div class="field">
+          <label>First Name</label>
+          {{input value=model.copy.name class="ui input"}}
+        </div>
+        <div class="field">
+          <label>Last Name</label>
+          {{textarea value=model.copy.descriptif class="ui input"}}
+        </div>
+
+        <div class="two fields">
+          <div class="field">
+            Date de création {{input type="date" value=model.copy.creationDate class="ui input"}}
+          </div>
+          <div class="field">
+            Date de rendu {{input type="date" value=model.copy.dueDate class="ui input"}}
+          </div>
+        </div>
+
+        <div class="field">
+
+          <!-- la doc http://semantic-org.github.io/Semantic-UI-Ember/#/modules/dropdown -->
+          {{#ui-dropdown class="selection" selected=model.copy.owner onChange=(action (mut model.copy.owner)) as |execute mapper| }}
+            <div class="default text">Propriétaire</div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              {{#each model.developers as |dev|}}
+                <div data-value="{{map-value mapper dev}}" class="item">
+                  {{dev.identity}}
+                </div>
+              {{/each}}
+            </div>
+          {{/ui-dropdown}}
+
+        </div>
+
+        <button {{action "save" model}} class="ui button green ">Enregistrer</button>
+        <button {{action "cancel" model}} class="ui button red ">Retour</button>
+
+      </form>
+    </div>
+
+  </div>
+</div>
+

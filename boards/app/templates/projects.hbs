@@ -1,0 +1,72 @@
+
+<div class="ui grid centered">
+  <div class="column four wide ">
+    {{#link-to "projects.new" class="ui orange button"}}
+      Ajouter un projet...
+    {{/link-to}}
+  </div>
+
+</div>
+<ul>
+
+  <table class="ui sixteen compact fixed striped structured selectable table">
+    <thead>
+    <tr>
+      <th class="four wide">Nom</th>
+      <th class="six wide">Descriptif</th>
+      <th class="two wide">D. Création</th>
+      <th class="two wide">D. Rendu</th>
+      <th class="one wide"></th>
+      <th class="one wide"></th>
+
+
+
+    </tr>
+    </thead>
+    <tbody>
+
+    {{#each model as |project|}}
+      <tr>
+        <td>{{project.name}}</td>
+        <td>{{project.descriptif}}</td>
+        <td>{{project.creationDate}}</td>
+        <td>{{project.dueDate}}</td>
+
+
+
+
+
+
+
+
+        <td class="center aligned">
+          {{#link-to "projects.edit" project class="ui basic circular icon button" }}
+            <i class="edit icon blue"></i>
+          {{/link-to}}
+
+
+        </td>
+        <td class="center aligned">
+
+          {{#link-to "projects.delete" project class="ui basic circular icon button" }}
+            <i class="remove icon red"></i>
+          {{/link-to}}
+
+        </td>
+      </tr>
+    {{/each}}
+
+
+
+    </tbody>
+
+
+
+
+  </table>
+
+  {{outlet}}
+
+</ul>
+
+

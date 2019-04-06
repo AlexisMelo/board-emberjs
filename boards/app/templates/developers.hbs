@@ -1,0 +1,52 @@
+<div class="ui grid centered">
+  <div class="column four wide ">
+    {{#link-to "developers.new" class="ui blue button"}}
+      Ajouter un développeur...
+    {{/link-to}}
+  </div>
+
+</div>
+<ul>
+
+  <table class="ui sixteen compact fixed striped structured selectable table">
+    <thead>
+    <tr>
+      <th class="twelve wide">Identity</th>
+      <th class="two wide"></th>
+      <th class="two wide"></th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {{#each model as |dev|}}
+      <tr>
+        <td>{{dev.identity}}</td>
+        <td class="center aligned">
+          {{#link-to "developers.edit" dev class="ui basic circular icon button" }}
+            <i class="edit icon blue"></i>
+          {{/link-to}}
+
+
+        </td>
+        <td class="center aligned"> <!-- <button {{action "delete" dev }} class="ui basic circular icon button"><i class="remove icon red"></i>
+</button>  -->
+
+          {{#link-to "developers.delete" dev class="ui basic circular icon button" }}
+            <i class="remove icon red"></i>
+          {{/link-to}}
+
+        </td>
+      </tr>
+    {{/each}}
+
+
+    {{outlet}}
+
+    </tbody>
+
+
+
+
+  </table>
+</ul>
+
